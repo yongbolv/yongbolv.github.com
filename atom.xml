@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-25T15:06:48.000Z</updated>
+  <updated>2016-09-25T17:11:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>new2</title>
-    <link href="http://yoursite.com/2016/09/25/new2/"/>
-    <id>http://yoursite.com/2016/09/25/new2/</id>
-    <published>2016-09-25T15:06:48.000Z</published>
-    <updated>2016-09-25T15:06:48.000Z</updated>
+    <title>vue.js技术总结</title>
+    <link href="http://yoursite.com/2016/09/26/vue-js%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/09/26/vue-js技术总结/</id>
+    <published>2016-09-25T16:48:50.000Z</published>
+    <updated>2016-09-25T17:11:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="vuejs概述"><a href="#vuejs概述" class="headerlink" title="vuejs概述"></a>vuejs概述</h2><p>Vue.js是用于构建交互式的Web界面的库。它提供了MVVM数据绑定和一个可组合的组件系统，具有简单、灵活的API。<br>结合node.js 可以实现前后端开发从物理上的分离。使前端负责View和Controller层，后端负责数据接口，数据存储。<br>感兴趣可以看淘宝ued <a href="http://blog.jobbole.com/65513/" target="_blank" rel="external">《前后端分离的思考与实践》</a></p>
+<h3 id="vuejs有以下几个特点"><a href="#vuejs有以下几个特点" class="headerlink" title="vuejs有以下几个特点"></a>vuejs有以下几个特点</h3><h4 id="1-使用简单-如："><a href="#1-使用简单-如：" class="headerlink" title="1.使用简单, 如："></a>1.使用简单, 如：</h4><pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p&gt;{{ note }}&lt;/p&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;note&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+var vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {
+        note: &apos;&apos;
+    }
+})
+</code></pre><h4 id="2-外观优雅"><a href="#2-外观优雅" class="headerlink" title="2.外观优雅"></a>2.外观优雅</h4><p><code>&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</code><br><code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</code><br><code>&lt;a @click.stop=&quot;doSomething&quot;&gt;&lt;/a&gt;</code> //阻止单击事件冒泡<br><code>&lt;input @keyup.enter=&quot;submit&quot;&gt;</code> 　　 //只在按下回车键的时候触发事件<br><code>&lt;input v-model=&quot;msg&quot; lazy&gt;</code>　　　　 //lazy: 在’change’而不是’input’事件中更新数据</p>
+<h4 id="3-小巧灵活"><a href="#3-小巧灵活" class="headerlink" title="3.小巧灵活"></a>3.小巧灵活</h4><p>gzip压缩后只有25.11kb。<br>松耦合，和路由模块, 网络请求模块，数据模块 等相分离，可单独使用。</p>
+<h4 id="4-功能强大"><a href="#4-功能强大" class="headerlink" title="4.功能强大"></a>4.功能强大</h4><ul>
+<li>模块化，可以直接使用ES6的模块化功能，再结合Webpack进行相应打包是目前最热门的方案。</li>
+<li>组件化， 通过将页面上某一组件的html、CSS、js代码放入一个.vue的文件中进行管理可以大大提高代码的维护性。</li>
+<li>路由，结合 vue-router 可以实现各个组件的按需加载，轻松构建单页应用。如：<pre><code>&apos;*&apos;: {component: require(&apos;./components/not-found&apos;)}, //not found handler
+&apos;/&apos;: {component: require(&apos;./components/index&apos;)},
+&apos;/login&apos;: {component: require(&apos;./components/login&apos;)},
+&apos;/field&apos;: {component (resolve) { require([&apos;./components/defconfig/field&apos;], resolve) }},
+&apos;/stat&apos;: {component (resolve) { require([&apos;./components/defconfig/stat&apos;], resolve) }}
+</code></pre></li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li>装 node 版本: v6.3.0</li>
+<li>装 npm 版本: 3.10.3 </li>
+<li>运行命令:  npm install 安装插件 、npm run dev 运行项目 <h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2></li>
+<li>FQ工具： <a href="https://www.getlantern.org/" target="_blank" rel="external">lantern</a></li>
+<li>Sublime Text3  安装 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a> 安装插件：EditorConfig、Vue Syntax Highlight</li>
+<li>chrome插件 安装 <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">Vue.js devtools</a>(调试vue)  <a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" target="_blank" rel="external">Google翻译插件</a>  </li>
+<li><a href="https://www.telerik.com/download/fiddler" target="_blank" rel="external">抓包工具 fiddler</a><h3 id="vuejs-主要参考库："><a href="#vuejs-主要参考库：" class="headerlink" title="vuejs 主要参考库："></a>vuejs 主要参考库：</h3><ul>
+<li><a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue</a></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><a href="http://vuex.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vex</a></li>
+<li><a href="http://router.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vue-router</a></li>
+<li><a href="https://github.com/vuejs/vue-resource" target="_blank" rel="external">vue-resource</a> </li>
+<li><a href="http://yuche.github.io/vue-strap" target="_blank" rel="external">vue-strap</a><h3 id="其他参考库："><a href="#其他参考库：" class="headerlink" title="其他参考库："></a>其他参考库：</h3></li>
+<li><a href="http://v3.bootcss.com" target="_blank" rel="external">bootstrap</a></li>
+<li><a href="%20http://eslint.org/">flint</a></li>
+<li><a href="%20http://webpack.github.io/docs/">webpack</a></li>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">es6</a></li>
+<li><a href="http://babeljs.cn/" target="_blank" rel="external">babel</a></li>
+<li><a href="https://nodejs.org/en/docs/" target="_blank" rel="external">node.js</a><h3 id="一些开源的插件："><a href="#一些开源的插件：" class="headerlink" title="一些开源的插件："></a>一些开源的插件：</h3></li>
+<li><a href="http://www.zhihu.com/question/38213423" target="_blank" rel="external">http://www.zhihu.com/question/38213423</a></li>
+<li><a href="%20https://github.com/vuejs/awesome-vue#libraries--plugins">https://github.com/vuejs/awesome-vue#libraries–plugins</a></li>
+</ul>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h2 id=&quot;vuejs概述&quot;&gt;&lt;a href=&quot;#vuejs概述&quot; class=&quot;headerlink&quot; title=&quot;vuejs概述&quot;&gt;&lt;/a&gt;vuejs概述&lt;/h2&gt;&lt;p&gt;Vue.js是用于构建交互式的Web界面的库。它提供了MVVM数据绑定和一个可组合的组件系统，具有简
     
     </summary>
     
@@ -30,11 +85,11 @@
   </entry>
   
   <entry>
-    <title>目录</title>
+    <title>Hello - World</title>
     <link href="http://yoursite.com/2016/09/25/hello-world/"/>
     <id>http://yoursite.com/2016/09/25/hello-world/</id>
     <published>2016-09-25T11:29:04.000Z</published>
-    <updated>2016-09-25T14:52:42.000Z</updated>
+    <updated>2016-09-25T17:12:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>``` bash<br>$ hexo new “My New Post”<br>```</p>
