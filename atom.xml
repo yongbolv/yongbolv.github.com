@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-25T17:11:05.000Z</updated>
+  <updated>2016-09-25T17:21:07.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/09/26/vue-js%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/09/26/vue-js技术总结/</id>
     <published>2016-09-25T16:48:50.000Z</published>
-    <updated>2016-09-25T17:11:05.000Z</updated>
+    <updated>2016-09-25T17:21:07.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="vuejs概述"><a href="#vuejs概述" class="headerlink" title="vuejs概述"></a>vuejs概述</h2><p>Vue.js是用于构建交互式的Web界面的库。它提供了MVVM数据绑定和一个可组合的组件系统，具有简单、灵活的API。<br>结合node.js 可以实现前后端开发从物理上的分离。使前端负责View和Controller层，后端负责数据接口，数据存储。<br>感兴趣可以看淘宝ued <a href="http://blog.jobbole.com/65513/" target="_blank" rel="external">《前后端分离的思考与实践》</a></p>
 <h3 id="vuejs有以下几个特点"><a href="#vuejs有以下几个特点" class="headerlink" title="vuejs有以下几个特点"></a>vuejs有以下几个特点</h3><h4 id="1-使用简单-如："><a href="#1-使用简单-如：" class="headerlink" title="1.使用简单, 如："></a>1.使用简单, 如：</h4><pre><code>&lt;body&gt;
@@ -54,12 +54,10 @@ var vm = new Vue({
 <li>FQ工具： <a href="https://www.getlantern.org/" target="_blank" rel="external">lantern</a></li>
 <li>Sublime Text3  安装 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a> 安装插件：EditorConfig、Vue Syntax Highlight</li>
 <li>chrome插件 安装 <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">Vue.js devtools</a>(调试vue)  <a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" target="_blank" rel="external">Google翻译插件</a>  </li>
-<li><a href="https://www.telerik.com/download/fiddler" target="_blank" rel="external">抓包工具 fiddler</a><h3 id="vuejs-主要参考库："><a href="#vuejs-主要参考库：" class="headerlink" title="vuejs 主要参考库："></a>vuejs 主要参考库：</h3><ul>
-<li><a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue</a></li>
-</ul>
-</li>
+<li><a href="https://www.telerik.com/download/fiddler" target="_blank" rel="external">抓包工具 fiddler</a><h3 id="vuejs-主要参考库："><a href="#vuejs-主要参考库：" class="headerlink" title="vuejs 主要参考库："></a>vuejs 主要参考库：</h3></li>
 </ol>
 <ul>
+<li><a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue</a></li>
 <li><a href="http://vuex.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vex</a></li>
 <li><a href="http://router.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vue-router</a></li>
 <li><a href="https://github.com/vuejs/vue-resource" target="_blank" rel="external">vue-resource</a> </li>
