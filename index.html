@@ -1,141 +1,180 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<title>vuejs概述</title>
-	</head>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
 <body>
-<h2>vuejs概述</h2>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/25/hello-world/" class="article-date">
+  <time datetime="2016-09-25T11:29:04.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/25/hello-world/">Hello World</a>
+    </h1>
+  
 
-<p>Vue.js是用于构建交互式的Web界面的库。它提供了MVVM数据绑定和一个可组合的组件系统，具有简单、灵活的API。</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
-<p>结合node.js 可以实现前后端开发从物理上的分离。使前端负责View和Controller层，后端负责数据接口，数据存储。</p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/25/hello-world/" data-id="citio9b7y0000udu2zmpa7wr0" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
 
-<p>感兴趣可以看淘宝ued <a href="http://blog.jobbole.com/65513/">《前后端分离的思考与实践》</a></p>
 
-<h3>vuejs有以下几个特点</h3>
+  
 
-<h4>1.使用简单, 如：</h4>
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
-<pre><code>&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;p&gt;{{ note }}&lt;/p&gt;
-        &lt;input type=&quot;text&quot; v-model=&quot;note&quot;&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-var vm = new Vue({
-    el: &#39;#app&#39;,
-    data: {
-        note: &#39;&#39;
-    }
-})
-</code></pre>
+  
+    
 
-<h4>2.外观优雅</h4>
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
 
-<p><code>&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</code></p>
 
-<p><code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt; </code></p>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/25/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
-<p><code>&lt;a @click.stop=&quot;doSomething&quot;&gt;&lt;/a&gt;</code> //阻止单击事件冒泡</p>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-<p><code>&lt;input @keyup.enter=&quot;submit&quot;&gt;</code> 　　 //只在按下回车键的时候触发事件</p>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<p><code>&lt;input v-model=&quot;msg&quot; lazy&gt;</code>　　　　 //lazy: 在&#39;change&#39;而不是&#39;input&#39;事件中更新数据</p>
 
-<h4>3.小巧灵活</h4>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-<p>gzip压缩后只有25.11kb。</p>
 
-<p>松耦合，和路由模块, 网络请求模块，数据模块 等相分离，可单独使用。</p>
+<script src="/js/script.js"></script>
 
-<h4>4.功能强大</h4>
-
-<ul>
-	<li>模块化，可以直接使用ES6的模块化功能，再结合Webpack进行相应打包是目前最热门的方案。</li>
-	<li>组件化， 通过将页面上某一组件的html、CSS、js代码放入一个.vue的文件中进行管理可以大大提高代码的维护性。如：</li>
-</ul>
-
-<pre><code>&lt;template&gt;
-    &lt;div class=&quot;box&quot; v-text=&quot;note&quot;&gt;&lt;/div&gt;
-&lt;/template&gt;
-&lt;script&gt;
-    export default {
-    data () {
-        return {
-            note: &#39;这是一个组件的html模板！&#39;
-        }
-    }
-}
-&lt;/script&gt;
-&lt;style scoped&gt;
-    .box {
-        color: #000;
-    }
-&lt;/style&gt;
-</code></pre>
-
-<ul>
-	<li>路由，结合 vue-router 可以实现各个组件的按需加载，轻松构建单页应用。如：</li>
-</ul>
-
-<pre><code>export default (router) =&gt; {
-    router.map({
-        &#39;*&#39;: {component: require(&#39;./components/not-found&#39;)}, //not found handler
-        &#39;/&#39;: {component: require(&#39;./components/index&#39;)},
-        &#39;/login&#39;: {component: require(&#39;./components/login&#39;)},
-        &#39;/field&#39;: {component (resolve) { require([&#39;./components/defconfig/field&#39;], resolve) }},
-        &#39;/stat&#39;: {component (resolve) { require([&#39;./components/defconfig/stat&#39;], resolve) }}
-    })
-}
-</code></pre>
-
-<h2>使用</h2>
-
-<ol>
-	<li>装 node 版本: v6.3.0</li>
-	<li>装 npm 版本: 3.10.3 </li>
-	<li>运行命令: npm install 安装插件 、npm run dev 运行项目 </li>
-</ol>
-
-<h2>相关工具</h2>
-
-<ol>
-	<li>FQ工具： <a href="https://www.getlantern.org/">lantern</a></li>
-	<li> Sublime Text3 安装 <a href="https://packagecontrol.io/installation">Package Control</a> 安装插件：EditorConfig、Vue Syntax Highlight</li>
-	<li>chrome插件 安装 <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd">Vue.js devtools</a>(调试vue) <a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb">Google翻译插件</a> </li>
-	<li> <a href="https://www.telerik.com/download/fiddler">抓包工具 fiddler</a></li>
-</ol>
-
-<h3>vuejs 主要参考库：</h3>
-
-<ul>
-	<li> <a href="http://cn.vuejs.org/guide/">vue</a></li>
-	<li> <a href="http://vuex.vuejs.org/zh-cn/index.html">vex</a></li>
-	<li> <a href="http://router.vuejs.org/zh-cn/index.html">vue-router</a></li>
-	<li> <a href="https://github.com/vuejs/vue-resource">vue-resource</a> </li>
-	<li> <a href="http://yuche.github.io/vue-strap">vue-strap</a></li>
-</ul>
-
-<h3>其他参考库：</h3>
-
-<ul>
-	<li><a href="http://v3.bootcss.com">bootstrap</a></li>
-	<li><a href="%20http://eslint.org/">flint</a></li>
-	<li><a href="%20http://webpack.github.io/docs/">webpack</a></li>
-	<li><a href="http://es6.ruanyifeng.com/">es6</a></li>
-	<li><a href="http://babeljs.cn/">babel</a></li>
-	<li><a href="https://nodejs.org/en/docs/">node.js</a></li>
-</ul>
-
-<h3>一些开源的插件：</h3>
-
-<ul>
-	<li><a href="http://www.zhihu.com/question/38213423">http://www.zhihu.com/question/38213423</a></li>
-	<li>&nbsp;<a href="%20https://github.com/vuejs/awesome-vue#libraries--plugins">https://github.com/vuejs/awesome-vue#libraries--plugins</a></li>
-</ul>
-
+  </div>
 </body>
 </html>
-
