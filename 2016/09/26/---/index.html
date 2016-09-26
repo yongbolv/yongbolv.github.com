@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Terry's Blog" type="application/atom+xml" />
 
@@ -97,7 +99,7 @@
 <meta property="og:image" content="https://github.com/yongbolv/images/blob/master/hyperscript.png?raw=true">
 <meta property="og:image" content="https://github.com/yongbolv/images/blob/master/gemscartvue1.png?raw=true">
 <meta property="og:image" content="https://github.com/yongbolv/images/blob/master/consoleprint.png?raw=true">
-<meta property="og:updated_time" content="2016-09-26T15:28:15.000Z">
+<meta property="og:updated_time" content="2016-09-26T15:52:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="窥探Vue.js2.0">
 <meta name="twitter:description" content="窥探Vue.js2.0令人兴奋的Vue.js 2.0马上就要来了。新的VUE有重大的改进，添加了一些新的特性，比如 Virtual-DOM（类似React.js的虚拟DOM），Server Side Rendering（服务端渲染），支持 JSX/Hyperscript 语法等，并去掉了一些已有的方法。
@@ -326,52 +328,9 @@
 </ul>
 <h3 id="sync-修饰符"><a href="#sync-修饰符" class="headerlink" title=".sync 修饰符"></a>.sync 修饰符</h3><p>当父子组件传参的时候我们肯能会想到把.sync修饰符用于子组件的prop上，以实现数据的双向绑定。从现在起，props 就只有单项绑定了。如果当一个组件需要修改他作用域外的数据的时候，它只能emit一个事件（vm.$emit(event,[..args])事件）让监听器回调，而不是再依赖于之前的隐士绑定了。<br>去掉这个修饰符的目的是为了防止子组件在父组件的范围内所引发的副作用。这样，当你阅读一个组件的代码的时候，就更加容易理解它做了什么以及是如何影响其他部分的。</p>
 <h3 id="vue-版本的比较"><a href="#vue-版本的比较" class="headerlink" title="vue 版本的比较"></a>vue 版本的比较</h3><h4 id="用vue-1-0"><a href="#用vue-1-0" class="headerlink" title="用vue 1.0.*"></a>用vue 1.0.*</h4><p>如下脚本所示：<br>这是个用户可以购买宝石的页面，其中有个Vue实例和一个购物车组件。在购物车组件里，用户选择了要购买多少个然后这个购物车组件把这个变化反映给它的父组件。<br>用vue1.0.* 的话，要实现这个功能是显而易见的。我们创建一个变量，来存储所选择的数量，我们把它传递给购物车组件，等待选择数量来更改它的值，在父组件上在写一个computed属性来计算总价格。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.23/vue.js&quot;&gt;&lt;/script&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot;&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;title&gt;Gem Market&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;container&quot;&gt;
-&lt;h1&gt;Gem Market&lt;/h1&gt;
-&lt;cart :quantity.sync=&quot;quantity&quot;&gt;&lt;/cart&gt;
-&lt;hr&gt;
-&lt;div&gt;
-  &lt;h3&gt;You have to pay &lt;strong&gt;{{ gold }}&lt;/strong&gt; pieces of gold.&lt;/h3&gt;
-&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;template id=&quot;cart-template&quot;&gt;
-&lt;h2&gt;How many gems would you like to buy?&lt;/h2&gt;
-&lt;p&gt;1 emerald costs 100 pieces of gold.&lt;/p&gt;
-&lt;input v-model=&quot;quantity&quot; class=&quot;form-control&quot; number&gt;
-  &lt;/template&gt;
-&lt;/body&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-Vue.component(&apos;cart&apos;, {
-  template: &quot;#cart-template&quot;,
-  props: { quantity : 0 }
-});
-new Vue({
-  el: &apos;.container&apos;,
-  data : function () {
-return {
-  quantity: 0
-};
-  },
-  computed:{
-gold: function(){
-  return this.quantity * 100
-}
-  }
-})
-&lt;/script&gt;
-&lt;/html&gt;
-</code></pre><p><img src="https://github.com/yongbolv/images/blob/master/gemscartvue1.png?raw=true" alt=""></p>
+<p><code>&lt;!DOCTYPE html&gt;</code><br><code>&lt;html&gt;</code><br><code>&lt;head&gt;</code><br><code>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.23/vue.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot;&gt;</code><br><code>&lt;meta charset=&quot;utf-8&quot;&gt;</code><br><code>&lt;title&gt;Gem Market&lt;/title&gt;</code><br><code>&lt;/head&gt;</code><br><code>&lt;body&gt;</code><br><code>&lt;div class=&quot;container&quot;&gt;</code><br><code>&lt;h1&gt;Gem Market&lt;/h1&gt;</code><br><code>&lt;cart :quantity.sync=&quot;quantity&quot;&gt;&lt;/cart&gt;</code><br><code>&lt;hr&gt;</code><br><code>&lt;div&gt;</code><br><code>&lt;h3&gt;You have to pay &lt;strong&gt;&lt;/strong&gt; pieces of gold.&lt;/h3&gt;</code><br><code>&lt;/div&gt;</code><br><code>&lt;/div&gt;</code><br><code>&lt;template id=&quot;cart-template&quot;&gt;</code><br><code>&lt;h2&gt;How many gems would you like to buy?&lt;/h2&gt;</code><br><code>&lt;p&gt;1 emerald costs 100 pieces of gold.&lt;/p&gt;</code><br><code>&lt;input v-model=&quot;quantity&quot; class=&quot;form-control&quot; number&gt;</code><br><code>&lt;/template&gt;</code><br><code>&lt;/body&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot;&gt;</code><br><code>Vue.component(&#39;cart&#39;, {</code><br><code>template: &quot;#cart-template&quot;,</code><br><code>props: { quantity : 0 }</code><br><code>});</code><br><code>new Vue({</code><br><code>el: &#39;.container&#39;,</code><br><code>data : function () {</code><br><code>return {</code><br><code>quantity: 0</code><br><code>};</code><br><code>},</code><br><code>computed:{</code><br><code>gold: function(){</code><br><code>return this.quantity * 100</code><br><code>}</code><br><code>}</code><br><code>})</code><br><code>&lt;/script&gt;</code><br><code>&lt;/html&gt;</code><br><img src="https://github.com/yongbolv/images/blob/master/gemscartvue1.png?raw=true" alt=""></p>
 <h4 id="用vue-2"><a href="#用vue-2" class="headerlink" title="用vue 2"></a>用vue 2</h4><p>如果切换到vue 2.0，运行上面的代码，我们会得到以下警告。</p>
-<p><em>[Vue warn]: Component template should contain exactly one root element.</em><br>为了去掉这个警告我们在 template内部加上一个Div元素。<br>      <template id="cart-template"><br>    <div><br>      <h2>How many gems would you like to buy?</h2><br>      <p>1 emerald costs 100 pieces of gold.</p><br>      <input v-model="gems" class="form-control" number=""><br>    </div><br>      </template><br>刷新浏览器，发现这个警告消失。<br>当我们改变这个变量的时候，我们得到这个警告。<br><em>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “gems” (found in component: \<cart\>)</cart\></em><br>这是因为在vue2中，直接修改prop是被视作反模式的。由于在新的渲染机制中，每当父组件重新渲染时，子组件都会被覆盖，所以应该把props看做是不可变对象 <a href="在面向对象和函数式编程，不可变对象的状态在创建后不能修改">^1</a>。<br>不能更改 quantity prop使其和父组件同步 , 而是让应该这个组件提交个事件给父组件，可以 watch quantity 变量，如果变量发生改变就emit事件，所以这里压根不需要 prop。<br>由于 vm.$dispatch 和 vm.$broadcast 被弃用了，我们用一个集中式事件集线器触发事件 来实现组件间的通讯。建议阅读 <a href="https://github.com/vuejs/vue/issues/2873#upgrade-tips" target="_blank" rel="external">升级提示</a>。<br>因为在Vue实例中已经实现了事件发射器接口emit，实际开发中可以用空的Vue实例作为事件发射器。<br>让我们看回这个例子，创建一个emitter，重构一下Cart组件。<br>    let bus = new Vue()<br>    Vue.component(‘cart’, {<br>      template: “#cart-template”,<br>      data () {<br>    return {quantity : 0 }<br>      },<br>      watch: {<br>    ‘quantity’: function (quantity, oldQuantity) {<br>      console.log(‘quantity changed from %s to %s’, oldQuantity, quantity)<br>      bus.$emit(‘quantity-changed’, quantity)<br>    }<br>      }<br>    });<br>检查下浏览器控制台，会发现每次改变quantity的值，都会在控制台上打印出变化前后的值。<br><img src="https://github.com/yongbolv/images/blob/master/consoleprint.png?raw=true" alt=""><br>然后，就是要更新父Vue的实例来监听，并更新相应的数据。<br>    new Vue({<br>      el: ‘.container’,<br>      data : function () {<br>    return {<br>      quantity: 0<br>    };<br>      },<br>      created: function () {<br>    // store this to use with Vue.set<br>    var temp = this;<br>    bus.$on(‘quantity-changed’, function (quantity) {<br>      // vm.$set deprecated<br>      Vue.set(temp, ‘quantity’, quantity)<br>    })<br>      },<br>      computed:{<br>    gold: function(){<br>      return this.quantity * 100<br>    }<br>      }<br>    })</p>
+<p><em>[Vue warn]: Component template should contain exactly one root element.</em><br>为了去掉这个警告我们在 template内部加上一个Div元素。<br>      <template id="cart-template"><br>    <div><br>      <h2>How many gems would you like to buy?</h2><br>      <p>1 emerald costs 100 pieces of gold.</p><br>      <input v-model="gems" class="form-control" number=""><br>    </div><br>      </template><br>刷新浏览器，发现这个警告消失。<br>当我们改变这个变量的时候，我们得到这个警告。<br><em>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “gems” (found in component: \<cart\>)</cart\></em><br>这是因为在vue2中，直接修改prop是被视作反模式的。由于在新的渲染机制中，每当父组件重新渲染时，子组件都会被覆盖，所以应该把props看做是不可变对象 <a href="在面向对象和函数式编程，不可变对象的状态在创建后不能修改">^1</a>。<br>不能更改 quantity prop使其和父组件同步 , 而是让应该这个组件提交个事件给父组件，可以 watch quantity 变量，如果变量发生改变就emit事件，所以这里压根不需要 prop。<br>由于 vm.$dispatch 和 vm.$broadcast 被弃用了，我们用一个集中式事件集线器触发事件 来实现组件间的通讯。建议阅读 <a href="https://github.com/vuejs/vue/issues/2873#upgrade-tips" target="_blank" rel="external">升级提示</a>。<br>因为在Vue实例中已经实现了事件发射器接口emit，实际开发中可以用空的Vue实例作为事件发射器。<br>让我们看回这个例子，创建一个emitter，重构一下Cart组件。<br>    let bus = new Vue()<br>    Vue.component(‘cart’, {<br>      template: “#cart-template”,<br>      data () {<br>    return {quantity : 0 }<br>      },<br>      watch: {<br>    ‘quantity’: function (quantity, oldQuantity) {<br>      console.log(‘quantity changed from %s to %s’, oldQuantity, quantity)<br>      bus.$emit(‘quantity-changed’, quantity)<br>    }<br>      }<br>    });<br>检查下浏览器控制台，会发现每次改变quantity的值，都会在控制台上打印出变化前后的值。<br><img src="https://github.com/yongbolv/images/blob/master/consoleprint.png?raw=true" alt=""><br>然后，就是要更新父Vue的实例来监听，并更新相应的数据。<br>    new Vue({<br>      el: ‘.container’,<br>      data : function () {<br>          return {<br>             quantity: 0<br>          };<br>      },<br>      created: function () {<br>      // store this to use with Vue.set<br>      var temp = this;<br>      bus.$on(‘quantity-changed’, function (quantity) {<br>          // vm.$set deprecated<br>          Vue.set(temp, ‘quantity’, quantity)<br>      })<br>      },<br>      computed:{<br>          gold: function(){<br>              return this.quantity * 100<br>          }<br>       }<br>    })</p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
 <li>vm.$set() 被弃用了，所以我们用全局方法 Vm.set()。<br>因为不能使用prop去同步，所以我们这样引用购物车组件：<br><code>&lt;cart&gt;&lt;/cart&gt;</code></li>
 <li>\’lazy\’ 和 \’number\’ 修饰符更改了，所以我们这样修改下 购物车组件里的Input ：<br>  // Vue 1<br>  <input v-model="”quantity”" class="”form-control”" number=""><br>  // Vue 2<br>  <input v-model.number="”quantity”" class="”form-control”"><br>好了，这就是所有的了，你可以查看最终代码，然后自己把玩一番吧 <a href="https://jsfiddle.net/hootlex/hvv2r8ae/" target="_blank" rel="external">JSFiddle</a>。<h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2>下面列出的资源清单强烈建议你去看下：</li>
