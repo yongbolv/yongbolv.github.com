@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-26T16:34:27.000Z</updated>
+  <updated>2016-09-26T16:38:54.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/09/26/%E7%AA%BA%E6%8E%A2Vue2/"/>
     <id>http://yoursite.com/2016/09/26/窺探Vue2/</id>
     <published>2016-09-26T06:22:34.000Z</published>
-    <updated>2016-09-26T16:34:27.000Z</updated>
+    <updated>2016-09-26T16:38:54.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="窥探Vue-js2-0"><a href="#窥探Vue-js2-0" class="headerlink" title="窥探Vue.js2.0"></a>窥探Vue.js2.0</h2><p>令人兴奋的Vue.js 2.0马上就要来了。新的VUE有重大的改进，添加了一些新的特性，比如 Virtual-DOM（类似React.js的虚拟DOM），Server Side Rendering（服务端渲染），支持 JSX/Hyperscript 语法等，并去掉了一些已有的方法。</p>
 <h2 id="新的特性"><a href="#新的特性" class="headerlink" title="新的特性"></a>新的特性</h2><h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><p>虚拟DOM 是一个真正DOM的抽象、轻量级版本。<br>它主要作用是让你操控虚拟DOM，来代替直接操控真是DOM。之后虚拟DOM和真是DOM比较，把两者差异的部分再渲染到页面上。<br>这比直接操作DOM的速度要快的多，因为DOM操作是非常耗时的，加入虚拟DOM对比之后减少不必要DOM操作花的时间比进行DOM和虚拟DOM对比的时间要多，所以采用虚拟DOM是更有优势的。更多关于 <a href="https://medium.com/tony-freed-consulting/what-is-virtual-dom-c0ec6d6a925c#.19z4hhwog" target="_blank" rel="external">什么是Virtual Dom？什么是DOM ?</a></p>
@@ -33,9 +33,10 @@
 </ol>
 <p>现在已有的后台服务端框架都可以实现如 <a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a> ，<a href="http://expressjs.com/" target="_blank" rel="external">Express</a> ，<a href="http://sailsjs.org/" target="_blank" rel="external">Sails</a>。</p>
 <h3 id="JSX-（Javascript-XML-syntax-transform）"><a href="#JSX-（Javascript-XML-syntax-transform）" class="headerlink" title="JSX （Javascript XML syntax transform）"></a>JSX （Javascript XML syntax transform）</h3><p>JSX是使用XML语法编写Javascript的一套解析工具，X代表XML。这不是要由引擎或浏览器中实现，它的目的是通过各种预处理程序（transpilers），将这些标记转换成标准的ECMAScript。实质上也就是说JSX是一个语法糖，每一个XML标签都会被JSX转换工具转换成纯Javascript代码。如：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">// Using JSX to express UI components.</span></div><div class="line"><span class="keyword">let</span> dropdown =</div><div class="line">  &lt;Dropdown&gt;</div><div class="line">A dropdown list</div><div class="line">&lt;Menu&gt;</div><div class="line">  &lt;MenuItem&gt;Do Something&lt;/MenuItem&gt;</div><div class="line">  &lt;MenuItem&gt;Do Something Fun!&lt;/MenuItem&gt;</div><div class="line">  &lt;MenuItem&gt;Do Something Else&lt;/MenuItem&gt;</div><div class="line">&lt;/Menu&gt;</div><div class="line">  &lt;/Dropdown&gt;;</div><div class="line">render(dropdown);</div></pre></td></tr></table></figure>
-</code></pre><h3 id="Hyperscript"><a href="#Hyperscript" class="headerlink" title="Hyperscript"></a>Hyperscript</h3><p>Hyperscript是JavaScript创建超文本（HTML）的语法。客户端、服务器端都支持。<br>如下代码及其输入：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">var</span> h = <span class="built_in">require</span>(<span class="string">'hyperscript'</span>)</div><div class="line">h(<span class="string">'h1.fun'</span>, &#123;<span class="attr">style</span>: &#123;<span class="string">'font-family'</span>: <span class="string">'Comic Sans MS'</span>&#125;&#125;, <span class="string">'Is Guybrush a French name?'</span>)</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">// Using JSX to express UI components.</span></div><div class="line"><span class="keyword">let</span> dropdown =</div><div class="line">       &lt;Dropdown&gt;</div><div class="line">       A dropdown list</div><div class="line">       &lt;Menu&gt;</div><div class="line">         &lt;MenuItem&gt;Do Something&lt;/MenuItem&gt;</div><div class="line">         &lt;MenuItem&gt;Do Something Fun!&lt;/MenuItem&gt;</div><div class="line">         &lt;MenuItem&gt;Do Something Else&lt;/MenuItem&gt;</div><div class="line">       &lt;/Menu&gt;</div><div class="line">       &lt;/Dropdown&gt;;</div><div class="line">render(dropdown);</div></pre></td></tr></table></figure>
+</code></pre><h3 id="Hyperscript"><a href="#Hyperscript" class="headerlink" title="Hyperscript"></a>Hyperscript</h3><p>Hyperscript是JavaScript创建超文本（HTML）的语法。客户端、服务器端都支持。<br>如下代码及其输入</p>
+<pre><code>var h = require(&apos;hyperscript&apos;)
+h(&apos;h1.fun&apos;, {style: {&apos;font-family&apos;: &apos;Comic Sans MS&apos;}}, &apos;Is Guybrush a French name?&apos;)
 </code></pre><p><img src="https://github.com/yongbolv/images/blob/master/hyperscript.png?raw=true" alt=""></p>
 <h2 id="舍弃和修改的部分"><a href="#舍弃和修改的部分" class="headerlink" title="舍弃和修改的部分"></a>舍弃和修改的部分</h2><p>接下来我将用一个实例演示vue这两个版本间的一些不同的地方。主要包括：</p>
 <ul>
