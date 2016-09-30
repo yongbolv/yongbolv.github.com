@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-27T15:16:04.000Z</updated>
+  <updated>2016-09-30T01:15:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,89 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>当你按下一个按钮之后，这个世界发生了什么？ 渲染篇</title>
+    <link href="http://yoursite.com/2016/09/27/%E5%BD%93%E4%BD%A0%E6%8C%89%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8C%89%E9%92%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%20%E6%B8%B2%E6%9F%93%E7%AF%87/"/>
+    <id>http://yoursite.com/2016/09/27/当你按下一个按钮之后，这个世界发生了什么？ 渲染篇/</id>
+    <published>2016-09-27T02:22:34.000Z</published>
+    <updated>2016-09-30T01:15:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常重要的性能评估的指标。<br>但是从一个用户角度来说的话，更重要的标准是从发送请求到网页可用需要多少时间，或者说是需要多长时间能看到页面内容。</p>
+<p>首先页面的渲染有几个特点</p>
+<ol>
+<li>单线陈事件轮询</li>
+<li></li>
+</ol>
+<p>什么是浏览器的重绘和重排呢?<br>二者何时发生以及如何权衡？<br>将重绘和重排引发的性能问题考虑进去？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常
+    
+    </summary>
+    
+      <category term="当你按下一个按钮之后，这个世界发生了什么" scheme="http://yoursite.com/categories/%E5%BD%93%E4%BD%A0%E6%8C%89%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8C%89%E9%92%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"/>
+    
+    
+      <category term="渲染" scheme="http://yoursite.com/tags/%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>weex工作原理</title>
+    <link href="http://yoursite.com/2016/09/27/weex%E6%8A%80%E6%9C%AF%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2016/09/27/weex技术工作原理/</id>
+    <published>2016-09-27T02:22:34.000Z</published>
+    <updated>2016-09-29T16:21:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="weex-工作原理"><a href="#weex-工作原理" class="headerlink" title="weex 工作原理"></a>weex 工作原理</h2><p><em>transformer 会把 template, style, script 都转换成一段段 json 或者 js，这样客户端只接收并运行js，不必同时解析html/css这些语法，并且这些js还会继续进行数据监听和绑定，然后生成最终的virtual dom 再发送给 native端进行渲染。</em><br><img src="https://raw.githubusercontent.com/yongbolv/images/master/weexframework.png" alt=""><br>weex 主要就是做了三件事</p>
+<ol>
+<li>在服务端用 Transformer 工具把 Vue 代码转换成 Js Bundle。</li>
+<li>在客户端运行Js Framework 的 JavaScript 引擎，解释执行Js Bundle生成Virtual DOM。</li>
+<li>在客户端设计一套 JS  Bridge，能使IOS端（或者Android端）的Object-C语言（或Java语言）与Javascript语言相互调用，把Virtual Dom转换为DOM，渲染到页面。H5端直接和Js Framework 通讯，不需要Js Bridge。<br>如下为Virtual DOM 渲染为Dom的过程：<br><img src="https://raw.githubusercontent.com/yongbolv/images/master/virtualdom.png" alt=""></li>
+</ol>
+<h3 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h3><ul>
+<li>ECMAScript：定义了JavaScript语言的标准</li>
+<li>JavaScriptCore：应用在在wekit内核内的js引擎，浏览器有Safari。</li>
+<li>V8: 应用在chromium内的js引擎，浏览器有Chrome。</li>
+<li>JS引擎的作用都是解释和执行JavaScript代码。</li>
+<li>有关JavaScript引擎解析的内容请查看 <a href="http://www.uml.org.cn/codeNorms/201306063.asp" target="_blank" rel="external">JavaScriptCore解析</a></li>
+<li>有关JavaScriptCore和V8的内容请查看：<a href="http://blog.csdn.net/milado_nju/article/details/22101681" target="_blank" rel="external">JavaScript引擎</a></li>
+</ul>
+<h3 id="怎么开始搭建个weex项目"><a href="#怎么开始搭建个weex项目" class="headerlink" title="怎么开始搭建个weex项目"></a>怎么开始搭建个weex项目</h3><p>相对比较简单看<a href="https://github.com/alibaba/weex" target="_blank" rel="external">官方</a>吧。  </p>
+<h3 id="weex相关工具"><a href="#weex相关工具" class="headerlink" title="weex相关工具"></a>weex相关工具</h3><ul>
+<li>node.js</li>
+<li>weex-toolkit </li>
+<li>Weex Playground App</li>
+</ul>
+<h3 id="相关论坛"><a href="#相关论坛" class="headerlink" title="相关论坛"></a>相关论坛</h3><ul>
+<li><a href="https://github.com/weexteam/article/issues" target="_blank" rel="external">weex 文章</a>  </li>
+<li><a href="https://github.com/weexteam/article/issues/50" target="_blank" rel="external">weex 调试</a> </li>
+<li><a href="http://alibaba.github.io/weex/doc/" target="_blank" rel="external">weex 文档</a>： </li>
+<li><a href="http://www.kmhaoshuai.com/#!/articles/use-vuex-in-weex" target="_blank" rel="external">weex中使用数据流工具Vuex实践</a> </li>
+<li><a href="%C2%A0https://gitter.im/weexteam/cn?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link">weex交流室</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;weex-工作原理&quot;&gt;&lt;a href=&quot;#weex-工作原理&quot; class=&quot;headerlink&quot; title=&quot;weex 工作原理&quot;&gt;&lt;/a&gt;weex 工作原理&lt;/h2&gt;&lt;p&gt;&lt;em&gt;transformer 会把 template, style, script
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>窥探Vue.js2.0</title>
     <link href="http://yoursite.com/2016/09/27/%E7%AA%BA%E6%8E%A2Vue2/"/>
     <id>http://yoursite.com/2016/09/27/窺探Vue2/</id>
     <published>2016-09-27T02:22:34.000Z</published>
-    <updated>2016-09-27T15:16:04.000Z</updated>
+    <updated>2016-09-29T15:59:35.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="窥探Vue-js2-0"><a href="#窥探Vue-js2-0" class="headerlink" title="窥探Vue.js2.0"></a>窥探Vue.js2.0</h2><p>令人兴奋的Vue.js 2.0马上就要来了。新的VUE有重大的改进，添加了一些新的特性，比如 Virtual-DOM，Server Side Rendering（服务端渲染），支持 JSX/Hyperscript 语法等，并去掉了一些已有的方法。</p>
 <h2 id="新的特性"><a href="#新的特性" class="headerlink" title="新的特性"></a>新的特性</h2><h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><p>在内存中构建一份DOM元素的轻量级版本，当数据更新之后修改Virtual Dom，对修改前后的两棵Virtual DOM 树进行diff差异对比。 把两者差异的部分局部渲染到页面DOM上。而不是直接修改DOM。<br>关于更多 <a href="https://medium.com/tony-freed-consulting/what-is-virtual-dom-c0ec6d6a925c#.19z4hhwog" target="_blank" rel="external">什么是Virtual Dom？什么是DOM ?</a></p>
@@ -100,7 +178,7 @@ h(&apos;h1.fun&apos;, {style: {&apos;font-family&apos;: &apos;Comic Sans MS&apos
     <link href="http://yoursite.com/2016/09/26/vue-js%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/09/26/vue-js技术总结/</id>
     <published>2016-09-25T16:48:50.000Z</published>
-    <updated>2016-09-25T17:30:34.000Z</updated>
+    <updated>2016-09-29T02:46:11.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="vuejs概述"><a href="#vuejs概述" class="headerlink" title="vuejs概述"></a>vuejs概述</h2><p>Vue.js是用于构建交互式的Web界面的库。它提供了MVVM数据绑定和一个可组合的组件系统，具有简单、灵活的API。<br>结合node.js 可以实现前后端开发从物理上的分离。使前端负责View和Controller层，后端负责数据接口，数据存储。<br>感兴趣可以看淘宝ued <a href="http://blog.jobbole.com/65513/" target="_blank" rel="external">《前后端分离的思考与实践》</a></p>
 <h3 id="vuejs有以下几个特点"><a href="#vuejs有以下几个特点" class="headerlink" title="vuejs有以下几个特点"></a>vuejs有以下几个特点</h3><h4 id="1-使用简单-如："><a href="#1-使用简单-如：" class="headerlink" title="1.使用简单, 如："></a>1.使用简单, 如：</h4><pre><code>&lt;body&gt;
@@ -137,6 +215,7 @@ var vm = new Vue({
 <li>Sublime Text3  安装 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a> 安装插件：EditorConfig、Vue Syntax Highlight</li>
 <li>chrome插件 安装 <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">Vue.js devtools</a>(调试vue)  <a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" target="_blank" rel="external">Google翻译插件</a>  </li>
 <li><a href="https://www.telerik.com/download/fiddler" target="_blank" rel="external">抓包工具 fiddler</a></li>
+<li><a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">vue-cli</a> vue的脚手架 </li>
 </ol>
 <h3 id="vuejs-主要参考库："><a href="#vuejs-主要参考库：" class="headerlink" title="vuejs 主要参考库："></a>vuejs 主要参考库：</h3><ul>
 <li><a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue</a></li>
