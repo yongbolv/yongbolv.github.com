@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-29T16:21:58.000Z</updated>
+  <updated>2016-10-01T07:20:54.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,213 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重排和重绘</title>
+    <link href="http://yoursite.com/2016/10/01/%E9%87%8D%E6%8E%92%E5%92%8C%E9%87%8D%E7%BB%98/"/>
+    <id>http://yoursite.com/2016/10/01/重排和重绘/</id>
+    <published>2016-10-01T07:19:27.000Z</published>
+    <updated>2016-10-01T07:20:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。<br>重绘：（Repaint） 有的资料也被叫做改型（ Restyling）,是由于元素的外观样式属性的改变所触发的行为，如visibility、背景颜色，边框颜色等属性。<br>重排：（Reflow）也被成为重新布局（Relayout），是由于元素的结构属性（或者说是几何属性）改变所触发的行为，主要场景如下：</p>
+<ul>
+<li>DOM树节点的操作比， 如：Resizing, Removing, Adding 。</li>
+<li>文本的改变，如：text。</li>
+<li>浏览器窗口的改变，如： Resizing, Scrolling。</li>
+<li>伪类的激活，如：:hover。</li>
+<li>Class 属性改变。</li>
+<li>Css 属性改变。</li>
+<li>新的stylesheets 被添加或者旧的被删除。</li>
+</ul>
+<h3 id="浏览器对重排的优化："><a href="#浏览器对重排的优化：" class="headerlink" title="浏览器对重排的优化："></a>浏览器对重排的优化：</h3><p>通常浏览器对重绘和重排做了一些优化处理，比如：</p>
+<ul>
+<li>如果改变一个absolute或者 fixed定位的元素，那么只会重排这个元素和他的子元素，但是当改变了static定位的元素，那么整个页面都会重排。</li>
+<li><p>另外比较有趣的是，<br>如下只也会引起一次重绘和一次重排：</p>
+<p> var $body = $(‘body’);<br> $body.css(‘padding’, ‘1px’); //no reflow, repaint<br> $body.css(‘color’, ‘red’); //no repaint<br> $body.css(‘margin’, ‘2px’); // reflow, repaint</p>
+</li>
+</ul>
+<p>如上描述，并不是每次属性改变都会引起重排或重绘，有时，它会等一段代码执行结束再一起处理，这样就只发生一次重排。但是如果直接获取属性值，浏览器会强制发生重排来确保获取真实的值。如下：</p>
+<pre><code>var $body = $(&apos;body&apos;); 
+$body.css(&apos;padding&apos;, &apos;1px&apos;); 
+$body.css(&apos;padding&apos;); // forced reflow 
+$body.css(&apos;color&apos;, &apos;red&apos;); 
+$body.css(&apos;margin&apos;, &apos;2px&apos;);
+</code></pre><p>总共我们得到了两此重排，由此看出浏览器的优化失败了。So 如果你想更改一些属性并且想使他们获得如你所愿的性能的时候，可以一起执行修改，然后再获取属性。具体参照下如下的代码： </p>
+<pre><code>&lt;!DOCTYPE html\&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&quot;http://code.jquery.com/jquery-2.1.0.min.js&quot;&gt;&lt;/script&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;JS Bin&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+.block {
+  padding: 50px;
+  margin: 10px;
+  background: #ccc;
+}
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(function() {
+    var $body = $(&apos;body&apos;);
+
+    // 1 reflow
+    $body.on(&apos;click&apos;, &apos;.block-1&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;margin&apos;, &apos;2px&apos;);
+    })
+
+    // 2 reflows
+    .on(&apos;click&apos;, &apos;.block-2&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;padding&apos;);
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;margin&apos;, &apos;2px&apos;);
+    })
+
+    // 3 repaints
+    .on(&apos;click&apos;, &apos;.block-3&apos;, function(e) {
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;color&apos;);
+        $body.css(&apos;color&apos;, &apos;yellow&apos;);
+        $body.css(&apos;background&apos;);
+        $body.css(&apos;color&apos;, &apos;blue&apos;);
+        $body.css(&apos;outline&apos;);
+    })
+
+    // 1 repaint
+    .on(&apos;click&apos;, &apos;.block-4&apos;, function(e) {
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;color&apos;, &apos;yellow&apos;);
+        $body.css(&apos;color&apos;, &apos;blue&apos;);
+
+        $body.css(&apos;color&apos;);
+        $body.css(&apos;background&apos;);
+        $body.css(&apos;outline&apos;);
+    })
+
+    // 3 reflows
+    .on(&apos;click&apos;, &apos;.block-5&apos;, function(e) {  
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body[0].offsetHeight;
+        $body.css(&apos;padding&apos;, &apos;2px&apos;);
+        $body[0].offsetTop;
+        $body.css(&apos;padding&apos;, &apos;3px&apos;);
+        $body[0].offsetWidth;
+    })
+
+    // 1 reflow
+    .on(&apos;click&apos;, &apos;.block-6&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;padding&apos;, &apos;2px&apos;);
+        $body.css(&apos;padding&apos;, &apos;3px&apos;);
+
+        $body[0].offsetHeight;
+        $body[0].offsetTop;
+        $body[0].offsetWidth;
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;block block-1&quot;&gt;Click to run example #1 (1 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-2&quot;&gt;Click to run example #2 (2 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-3&quot;&gt;Click to run example #3 (3 repaint)&lt;/div&gt;
+    &lt;div class=&quot;block block-4&quot;&gt;Click to run example #4 (1 repaint)&lt;/div&gt;
+    &lt;div class=&quot;block block-5&quot;&gt;Click to run example #5 (3 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-6&quot;&gt;Click to run example #6 (1 reflow)&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>有时我们不能避免重排的发生。比如，我们需要设置两次margin-left。第一次设置它100px（没有动画），第二次设置为50px（有动画）。代码如下：</p>
+<pre><code>&lt;!DOCTYPE html\&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(&apos;.example-1 li&apos;).click(function(){
+    $(this).removeClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 100);
+    $(this).addClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 50);
+});
+$(&apos;.example-2 li&apos;).click(function(){
+    $(this).removeClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 100);
+    $(this)[0].offsetHeight; // 强制执行重排，确保设置的100px能够生效
+    $(this).addClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 50);
+});
+&lt;/script&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+.has-transition {
+    -webkit-transition: margin-left 1s ease-out;
+    -moz-transition: margin-left 1s ease-out;
+    -o-transition: margin-left 1s ease-out;
+    transition: margin-left 1s ease-out;
+}
+li {
+    background: #ccc;
+    border: 1px #000 solid;
+    display: block;
+    padding: 2px;
+    margin-left: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;第一种情况)&lt;/p&gt;
+&lt;ul class=&quot;example-1&quot;&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;2&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;3&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;4&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二种情况)&lt;/p&gt;
+&lt;ul class=&quot;example-2&quot;&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;2&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;3&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;4&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如上，因为浏览器的缓存的原因只会在脚本的末尾才重排的特性，第一种方案是无法满足需求的，而我们需要有一个重排所以加上一个获取属性的代码<code>$(this)[0].offsetHeight;\</code> 主动调用重排，也就是第二方案就是我们要的效果。</p>
+<h3 id="最后是我最近工作中总结的一些关于前端优化的小技巧："><a href="#最后是我最近工作中总结的一些关于前端优化的小技巧：" class="headerlink" title="最后是我最近工作中总结的一些关于前端优化的小技巧："></a>最后是我最近工作中总结的一些关于前端优化的小技巧：</h3><ul>
+<li>尽量减少对DOM的操作，如果你对某个属性和对象要进行多次操作，要缓存它们。如果要完成复杂操作的时候，可以多用离线存储技术。</li>
+<li>最好只用.class设置元素的样式。</li>
+<li>所有的动画都设置为fixed或者absolute定位（要不就不要用动画）。</li>
+<li>重排是一个非常昂贵的操作，尽可能多的减少重排的次数和重排的影响范围。</li>
+<li>当页面滚动的时候禁用所有的:hover。</li>
+<li>在\<head\>标签内引用样式，在\<body\>标签后面引用scripts</body\></head\></li>
+<li>尽量让css选择器简单，直观（即使你使用的是预处理程序），越少嵌套越好。选择器的效率排名如下（第一个是最快的）：<ol>
+<li>Identificator: #id</li>
+<li>Class: .class</li>
+<li>Tag: div</li>
+<li>Neighbour selector: a + i</li>
+<li>Children selector: ul > li</li>
+<li>Universal selector: * .  Attribute selector: input<a href="">type=”text”</a></li>
+<li>Pseudoelements and pseudoclasses: a:hover<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><a href="http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#The_rendering_engines_threads" target="_blank" rel="external">浏览器的工作原理：新式网络浏览器幕后揭秘</a><br><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a></li>
+</ol>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概览&quot;&gt;&lt;a href=&quot;#概览&quot; class=&quot;headerlink&quot; title=&quot;概览&quot;&gt;&lt;/a&gt;概览&lt;/h3&gt;&lt;p&gt;重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。&lt;br&gt;重绘：
+    
+    </summary>
+    
+      <category term="按下按钮，世界发生了什么" scheme="http://yoursite.com/categories/%E6%8C%89%E4%B8%8B%E6%8C%89%E9%92%AE%EF%BC%8C%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"/>
+    
+    
+      <category term="repaint,reflow,重绘,重排" scheme="http://yoursite.com/tags/repaint-reflow-%E9%87%8D%E7%BB%98-%E9%87%8D%E6%8E%92/"/>
+    
+  </entry>
   
   <entry>
     <title>weex工作原理</title>

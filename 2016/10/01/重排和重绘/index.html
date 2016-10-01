@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vue," />
+  <meta name="keywords" content="repaint,reflow,重绘,重排," />
 
 
 
@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="weex 工作原理transformer 会把 template, style, script 都转换成一段段 json 或者 js，这样客户端只接收并运行js，不必同时解析html/css这些语法，并且这些js还会继续进行数据监听和绑定，然后生成最终的virtual dom 再发送给 native端进行渲染。weex 主要就是做了三件事
-
-在服务端用 Transformer 工具把 Vue 代码">
+<meta name="description" content="概览重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。重绘：（Repaint） 有的资料也被叫做改型（ Restyling）,是由于元素的外观样式属性的改变所触发的行为，如visibility、背景颜色，边框颜色等属性。重排：（Reflow）也被成为重新布局（Relayout），是由于元素的结构属性（或者说是几何属性）改变">
 <meta property="og:type" content="article">
-<meta property="og:title" content="weex工作原理">
-<meta property="og:url" content="http://yoursite.com/2016/09/27/weex技术工作原理/index.html">
+<meta property="og:title" content="重排和重绘">
+<meta property="og:url" content="http://yoursite.com/2016/10/01/重排和重绘/index.html">
 <meta property="og:site_name" content="Terry's Blog">
-<meta property="og:description" content="weex 工作原理transformer 会把 template, style, script 都转换成一段段 json 或者 js，这样客户端只接收并运行js，不必同时解析html/css这些语法，并且这些js还会继续进行数据监听和绑定，然后生成最终的virtual dom 再发送给 native端进行渲染。weex 主要就是做了三件事
-
-在服务端用 Transformer 工具把 Vue 代码">
-<meta property="og:image" content="https://raw.githubusercontent.com/yongbolv/images/master/weexframework.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/yongbolv/images/master/virtualdom.png">
-<meta property="og:updated_time" content="2016-09-29T16:21:58.000Z">
+<meta property="og:description" content="概览重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。重绘：（Repaint） 有的资料也被叫做改型（ Restyling）,是由于元素的外观样式属性的改变所触发的行为，如visibility、背景颜色，边框颜色等属性。重排：（Reflow）也被成为重新布局（Relayout），是由于元素的结构属性（或者说是几何属性）改变">
+<meta property="og:updated_time" content="2016-10-01T07:20:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="weex工作原理">
-<meta name="twitter:description" content="weex 工作原理transformer 会把 template, style, script 都转换成一段段 json 或者 js，这样客户端只接收并运行js，不必同时解析html/css这些语法，并且这些js还会继续进行数据监听和绑定，然后生成最终的virtual dom 再发送给 native端进行渲染。weex 主要就是做了三件事
-
-在服务端用 Transformer 工具把 Vue 代码">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/yongbolv/images/master/weexframework.png">
+<meta name="twitter:title" content="重排和重绘">
+<meta name="twitter:description" content="概览重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。重绘：（Repaint） 有的资料也被叫做改型（ Restyling）,是由于元素的外观样式属性的改变所触发的行为，如visibility、背景颜色，边框颜色等属性。重排：（Reflow）也被成为重新布局（Relayout），是由于元素的结构属性（或者说是几何属性）改变">
 
 
 
@@ -123,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/27/weex技术工作原理/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/01/重排和重绘/"/>
 
-  <title> weex工作原理 | Terry's Blog </title>
+  <title> 重排和重绘 | Terry's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -235,7 +226,7 @@
             
             
               
-                weex工作原理
+                重排和重绘
               
             
           </h1>
@@ -247,8 +238,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T10:22:34+08:00" content="2016-09-27">
-              2016-09-27
+            <time itemprop="dateCreated" datetime="2016-10-01T15:19:27+08:00" content="2016-10-01">
+              2016-10-01
             </time>
           </span>
 
@@ -261,8 +252,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术总结/" itemprop="url" rel="index">
-                    <span itemprop="name">技术总结</span>
+                  <a href="/categories/按下按钮，世界发生了什么/" itemprop="url" rel="index">
+                    <span itemprop="name">按下按钮，世界发生了什么</span>
                   </a>
                 </span>
 
@@ -294,32 +285,190 @@
       
 
       
-        <h2 id="weex-工作原理"><a href="#weex-工作原理" class="headerlink" title="weex 工作原理"></a>weex 工作原理</h2><p><em>transformer 会把 template, style, script 都转换成一段段 json 或者 js，这样客户端只接收并运行js，不必同时解析html/css这些语法，并且这些js还会继续进行数据监听和绑定，然后生成最终的virtual dom 再发送给 native端进行渲染。</em><br><img src="https://raw.githubusercontent.com/yongbolv/images/master/weexframework.png" alt=""><br>weex 主要就是做了三件事</p>
-<ol>
-<li>在服务端用 Transformer 工具把 Vue 代码转换成 Js Bundle。</li>
-<li>在客户端运行Js Framework 的 JavaScript 引擎，解释执行Js Bundle生成Virtual DOM。</li>
-<li>在客户端设计一套 JS  Bridge，能使IOS端（或者Android端）的Object-C语言（或Java语言）与Javascript语言相互调用，把Virtual Dom转换为DOM，渲染到页面。H5端直接和Js Framework 通讯，不需要Js Bridge。<br>如下为Virtual DOM 渲染为Dom的过程：<br><img src="https://raw.githubusercontent.com/yongbolv/images/master/virtualdom.png" alt=""></li>
+        <h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>重绘和重排都是发生在浏览器呈现引擎（渲染引擎）中的由于DOM元素改变所作出的事件过程。重绘不一定引起重排，而重排一定引起重绘。<br>重绘：（Repaint） 有的资料也被叫做改型（ Restyling）,是由于元素的外观样式属性的改变所触发的行为，如visibility、背景颜色，边框颜色等属性。<br>重排：（Reflow）也被成为重新布局（Relayout），是由于元素的结构属性（或者说是几何属性）改变所触发的行为，主要场景如下：</p>
+<ul>
+<li>DOM树节点的操作比， 如：Resizing, Removing, Adding 。</li>
+<li>文本的改变，如：text。</li>
+<li>浏览器窗口的改变，如： Resizing, Scrolling。</li>
+<li>伪类的激活，如：:hover。</li>
+<li>Class 属性改变。</li>
+<li>Css 属性改变。</li>
+<li>新的stylesheets 被添加或者旧的被删除。</li>
+</ul>
+<h3 id="浏览器对重排的优化："><a href="#浏览器对重排的优化：" class="headerlink" title="浏览器对重排的优化："></a>浏览器对重排的优化：</h3><p>通常浏览器对重绘和重排做了一些优化处理，比如：</p>
+<ul>
+<li>如果改变一个absolute或者 fixed定位的元素，那么只会重排这个元素和他的子元素，但是当改变了static定位的元素，那么整个页面都会重排。</li>
+<li><p>另外比较有趣的是，<br>如下只也会引起一次重绘和一次重排：</p>
+<p> var $body = $(‘body’);<br> $body.css(‘padding’, ‘1px’); //no reflow, repaint<br> $body.css(‘color’, ‘red’); //no repaint<br> $body.css(‘margin’, ‘2px’); // reflow, repaint</p>
+</li>
+</ul>
+<p>如上描述，并不是每次属性改变都会引起重排或重绘，有时，它会等一段代码执行结束再一起处理，这样就只发生一次重排。但是如果直接获取属性值，浏览器会强制发生重排来确保获取真实的值。如下：</p>
+<pre><code>var $body = $(&apos;body&apos;); 
+$body.css(&apos;padding&apos;, &apos;1px&apos;); 
+$body.css(&apos;padding&apos;); // forced reflow 
+$body.css(&apos;color&apos;, &apos;red&apos;); 
+$body.css(&apos;margin&apos;, &apos;2px&apos;);
+</code></pre><p>总共我们得到了两此重排，由此看出浏览器的优化失败了。So 如果你想更改一些属性并且想使他们获得如你所愿的性能的时候，可以一起执行修改，然后再获取属性。具体参照下如下的代码： </p>
+<pre><code>&lt;!DOCTYPE html\&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&quot;http://code.jquery.com/jquery-2.1.0.min.js&quot;&gt;&lt;/script&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;JS Bin&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+.block {
+  padding: 50px;
+  margin: 10px;
+  background: #ccc;
+}
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(function() {
+    var $body = $(&apos;body&apos;);
+
+    // 1 reflow
+    $body.on(&apos;click&apos;, &apos;.block-1&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;margin&apos;, &apos;2px&apos;);
+    })
+
+    // 2 reflows
+    .on(&apos;click&apos;, &apos;.block-2&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;padding&apos;);
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;margin&apos;, &apos;2px&apos;);
+    })
+
+    // 3 repaints
+    .on(&apos;click&apos;, &apos;.block-3&apos;, function(e) {
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;color&apos;);
+        $body.css(&apos;color&apos;, &apos;yellow&apos;);
+        $body.css(&apos;background&apos;);
+        $body.css(&apos;color&apos;, &apos;blue&apos;);
+        $body.css(&apos;outline&apos;);
+    })
+
+    // 1 repaint
+    .on(&apos;click&apos;, &apos;.block-4&apos;, function(e) {
+        $body.css(&apos;color&apos;, &apos;red&apos;);
+        $body.css(&apos;color&apos;, &apos;yellow&apos;);
+        $body.css(&apos;color&apos;, &apos;blue&apos;);
+
+        $body.css(&apos;color&apos;);
+        $body.css(&apos;background&apos;);
+        $body.css(&apos;outline&apos;);
+    })
+
+    // 3 reflows
+    .on(&apos;click&apos;, &apos;.block-5&apos;, function(e) {  
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body[0].offsetHeight;
+        $body.css(&apos;padding&apos;, &apos;2px&apos;);
+        $body[0].offsetTop;
+        $body.css(&apos;padding&apos;, &apos;3px&apos;);
+        $body[0].offsetWidth;
+    })
+
+    // 1 reflow
+    .on(&apos;click&apos;, &apos;.block-6&apos;, function(e) {
+        $body.css(&apos;padding&apos;, &apos;1px&apos;);
+        $body.css(&apos;padding&apos;, &apos;2px&apos;);
+        $body.css(&apos;padding&apos;, &apos;3px&apos;);
+
+        $body[0].offsetHeight;
+        $body[0].offsetTop;
+        $body[0].offsetWidth;
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;block block-1&quot;&gt;Click to run example #1 (1 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-2&quot;&gt;Click to run example #2 (2 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-3&quot;&gt;Click to run example #3 (3 repaint)&lt;/div&gt;
+    &lt;div class=&quot;block block-4&quot;&gt;Click to run example #4 (1 repaint)&lt;/div&gt;
+    &lt;div class=&quot;block block-5&quot;&gt;Click to run example #5 (3 reflow)&lt;/div&gt;
+    &lt;div class=&quot;block block-6&quot;&gt;Click to run example #6 (1 reflow)&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>有时我们不能避免重排的发生。比如，我们需要设置两次margin-left。第一次设置它100px（没有动画），第二次设置为50px（有动画）。代码如下：</p>
+<pre><code>&lt;!DOCTYPE html\&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(&apos;.example-1 li&apos;).click(function(){
+    $(this).removeClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 100);
+    $(this).addClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 50);
+});
+$(&apos;.example-2 li&apos;).click(function(){
+    $(this).removeClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 100);
+    $(this)[0].offsetHeight; // 强制执行重排，确保设置的100px能够生效
+    $(this).addClass(&apos;has-transition&apos;);
+    $(this).css(&apos;margin-left&apos;, 50);
+});
+&lt;/script&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+.has-transition {
+    -webkit-transition: margin-left 1s ease-out;
+    -moz-transition: margin-left 1s ease-out;
+    -o-transition: margin-left 1s ease-out;
+    transition: margin-left 1s ease-out;
+}
+li {
+    background: #ccc;
+    border: 1px #000 solid;
+    display: block;
+    padding: 2px;
+    margin-left: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;第一种情况)&lt;/p&gt;
+&lt;ul class=&quot;example-1&quot;&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;2&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;3&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;4&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二种情况)&lt;/p&gt;
+&lt;ul class=&quot;example-2&quot;&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;1&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;2&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;3&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;4&lt;/li&gt;
+    &lt;li class=&quot;has-transition&quot;&gt;5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如上，因为浏览器的缓存的原因只会在脚本的末尾才重排的特性，第一种方案是无法满足需求的，而我们需要有一个重排所以加上一个获取属性的代码<code>$(this)[0].offsetHeight;\</code> 主动调用重排，也就是第二方案就是我们要的效果。</p>
+<h3 id="最后是我最近工作中总结的一些关于前端优化的小技巧："><a href="#最后是我最近工作中总结的一些关于前端优化的小技巧：" class="headerlink" title="最后是我最近工作中总结的一些关于前端优化的小技巧："></a>最后是我最近工作中总结的一些关于前端优化的小技巧：</h3><ul>
+<li>尽量减少对DOM的操作，如果你对某个属性和对象要进行多次操作，要缓存它们。如果要完成复杂操作的时候，可以多用离线存储技术。</li>
+<li>最好只用.class设置元素的样式。</li>
+<li>所有的动画都设置为fixed或者absolute定位（要不就不要用动画）。</li>
+<li>重排是一个非常昂贵的操作，尽可能多的减少重排的次数和重排的影响范围。</li>
+<li>当页面滚动的时候禁用所有的:hover。</li>
+<li>在\<head\>标签内引用样式，在\<body\>标签后面引用scripts</body\></head\></li>
+<li>尽量让css选择器简单，直观（即使你使用的是预处理程序），越少嵌套越好。选择器的效率排名如下（第一个是最快的）：<ol>
+<li>Identificator: #id</li>
+<li>Class: .class</li>
+<li>Tag: div</li>
+<li>Neighbour selector: a + i</li>
+<li>Children selector: ul > li</li>
+<li>Universal selector: * .  Attribute selector: input<a href="">type=”text”</a></li>
+<li>Pseudoelements and pseudoclasses: a:hover<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><a href="http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#The_rendering_engines_threads" target="_blank" rel="external">浏览器的工作原理：新式网络浏览器幕后揭秘</a><br><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a></li>
 </ol>
-<h3 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h3><ul>
-<li>ECMAScript：定义了JavaScript语言的标准</li>
-<li>JavaScriptCore：应用在在wekit内核内的js引擎，浏览器有Safari。</li>
-<li>V8: 应用在chromium内的js引擎，浏览器有Chrome。</li>
-<li>JS引擎的作用都是解释和执行JavaScript代码。</li>
-<li>有关JavaScript引擎解析的内容请查看 <a href="http://www.uml.org.cn/codeNorms/201306063.asp" target="_blank" rel="external">JavaScriptCore解析</a></li>
-<li>有关JavaScriptCore和V8的内容请查看：<a href="http://blog.csdn.net/milado_nju/article/details/22101681" target="_blank" rel="external">JavaScript引擎</a></li>
-</ul>
-<h3 id="怎么开始搭建个weex项目"><a href="#怎么开始搭建个weex项目" class="headerlink" title="怎么开始搭建个weex项目"></a>怎么开始搭建个weex项目</h3><p>相对比较简单看<a href="https://github.com/alibaba/weex" target="_blank" rel="external">官方</a>吧。  </p>
-<h3 id="weex相关工具"><a href="#weex相关工具" class="headerlink" title="weex相关工具"></a>weex相关工具</h3><ul>
-<li>node.js</li>
-<li>weex-toolkit </li>
-<li>Weex Playground App</li>
-</ul>
-<h3 id="相关论坛"><a href="#相关论坛" class="headerlink" title="相关论坛"></a>相关论坛</h3><ul>
-<li><a href="https://github.com/weexteam/article/issues" target="_blank" rel="external">weex 文章</a>  </li>
-<li><a href="https://github.com/weexteam/article/issues/50" target="_blank" rel="external">weex 调试</a> </li>
-<li><a href="http://alibaba.github.io/weex/doc/" target="_blank" rel="external">weex 文档</a>： </li>
-<li><a href="http://www.kmhaoshuai.com/#!/articles/use-vuex-in-weex" target="_blank" rel="external">weex中使用数据流工具Vuex实践</a> </li>
-<li><a href="%C2%A0https://gitter.im/weexteam/cn?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link">weex交流室</a></li>
+</li>
 </ul>
 
       
@@ -343,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag">#vue</a>
+            <a href="/tags/repaint-reflow-重绘-重排/" rel="tag">#repaint,reflow,重绘,重排</a>
           
         </div>
       
@@ -352,17 +501,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/27/渲染篇/" rel="next" title="渲染篇">
-                <i class="fa fa-chevron-left"></i> 渲染篇
+              <a href="/2016/09/27/weex技术工作原理/" rel="next" title="weex工作原理">
+                <i class="fa fa-chevron-left"></i> weex工作原理
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/01/重排和重绘/" rel="prev" title="重排和重绘">
-                重排和重绘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,7 +641,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#weex-工作原理"><span class="nav-number">1.</span> <span class="nav-text">weex 工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念："><span class="nav-number">1.1.</span> <span class="nav-text">相关概念：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么开始搭建个weex项目"><span class="nav-number">1.2.</span> <span class="nav-text">怎么开始搭建个weex项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weex相关工具"><span class="nav-number">1.3.</span> <span class="nav-text">weex相关工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关论坛"><span class="nav-number">1.4.</span> <span class="nav-text">相关论坛</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器对重排的优化："><span class="nav-number">2.</span> <span class="nav-text">浏览器对重排的优化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后是我最近工作中总结的一些关于前端优化的小技巧："><span class="nav-number">3.</span> <span class="nav-text">最后是我最近工作中总结的一些关于前端优化的小技巧：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">4.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
           </div>
         </section>
