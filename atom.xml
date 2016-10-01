@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-30T01:15:25.000Z</updated>
+  <updated>2016-09-29T16:21:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,35 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>当你按下一个按钮之后，这个世界发生了什么？ 渲染篇</title>
-    <link href="http://yoursite.com/2016/09/27/%E5%BD%93%E4%BD%A0%E6%8C%89%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8C%89%E9%92%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F%20%E6%B8%B2%E6%9F%93%E7%AF%87/"/>
-    <id>http://yoursite.com/2016/09/27/当你按下一个按钮之后，这个世界发生了什么？ 渲染篇/</id>
-    <published>2016-09-27T02:22:34.000Z</published>
-    <updated>2016-09-30T01:15:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常重要的性能评估的指标。<br>但是从一个用户角度来说的话，更重要的标准是从发送请求到网页可用需要多少时间，或者说是需要多长时间能看到页面内容。</p>
-<p>首先页面的渲染有几个特点</p>
-<ol>
-<li>单线陈事件轮询</li>
-<li></li>
-</ol>
-<p>什么是浏览器的重绘和重排呢?<br>二者何时发生以及如何权衡？<br>将重绘和重排引发的性能问题考虑进去？</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常
-    
-    </summary>
-    
-      <category term="当你按下一个按钮之后，这个世界发生了什么" scheme="http://yoursite.com/categories/%E5%BD%93%E4%BD%A0%E6%8C%89%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8C%89%E9%92%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"/>
-    
-    
-      <category term="渲染" scheme="http://yoursite.com/tags/%E6%B8%B2%E6%9F%93/"/>
-    
-  </entry>
   
   <entry>
     <title>weex工作原理</title>
@@ -90,6 +61,51 @@
     
     
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>渲染篇</title>
+    <link href="http://yoursite.com/2016/09/27/%E6%B8%B2%E6%9F%93%E7%AF%87/"/>
+    <id>http://yoursite.com/2016/09/27/渲染篇/</id>
+    <published>2016-09-27T02:22:34.000Z</published>
+    <updated>2016-10-01T06:36:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常重要的性能评估的指标。<br>但是从一个用户角度来说，更重要的标准是从发送请求到网页变为可用需要多少时间，换句话也可以说是需要多长时间能看到页面内容。</p>
+<h2 id="浏览器内核的结构分析"><a href="#浏览器内核的结构分析" class="headerlink" title="浏览器内核的结构分析"></a>浏览器内核的结构分析</h2><p>为了更好的优化性能，我们了解一下浏览器内核的基本结构吧，如下是浏览器的主要组件和依赖关系：<br><img src="https://github.com/yongbolv/images/blob/master/broser/data-manage.png?raw=true" alt="浏览器的主要组件" title="浏览器的主要组件"></p>
+<h4 id="界面-User-Interface"><a href="#界面-User-Interface" class="headerlink" title="界面 (User Interface)"></a>界面 (User Interface)</h4><p>界面就是包括地址栏、后退/前进按钮、书签目录等，也就是你所看到的除了用来显示你所请求页面的主窗口之外的其他部分。</p>
+<h4 id="浏览器引擎-Browser-engine"><a href="#浏览器引擎-Browser-engine" class="headerlink" title="浏览器引擎 (Browser engine)"></a>浏览器引擎 (Browser engine)</h4><p>在用户界面和呈现引擎之间传送指令</p>
+<h4 id="呈现引擎-Rendering-engine"><a href="#呈现引擎-Rendering-engine" class="headerlink" title="呈现引擎 (Rendering engine)"></a>呈现引擎 (Rendering engine)</h4><p>用来解析请求来的html和css，并将其显示出来。</p>
+<h4 id="网络-Networking"><a href="#网络-Networking" class="headerlink" title="网络 (Networking)"></a>网络 (Networking)</h4><p>用来完成网络的调用。</p>
+<h4 id="UI后端-UI-Backbend"><a href="#UI后端-UI-Backbend" class="headerlink" title="UI后端 (UI Backbend)"></a>UI后端 (UI Backbend)</h4><p>来绘制一些基本组件。</p>
+<h4 id="JS解释器-JavaScript-Interpreter"><a href="#JS解释器-JavaScript-Interpreter" class="headerlink" title="JS解释器 (JavaScript Interpreter)"></a>JS解释器 (JavaScript Interpreter)</h4><p>Js的解析和执行。</p>
+<h4 id="数据存储-Data-Presistence"><a href="#数据存储-Data-Presistence" class="headerlink" title="数据存储 (Data Presistence)"></a>数据存储 (Data Presistence)</h4><p>持久层，也就是需要在硬盘上保存数据。</p>
+<h2 id="呈现引擎的概念"><a href="#呈现引擎的概念" class="headerlink" title="呈现引擎的概念"></a>呈现引擎的概念</h2><p>也有翻译成渲染引擎都是指的此，</p>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><ul>
+<li>渲染引擎：</li>
+<li>解析与DOM树构建</li>
+<li>渲染树构建</li>
+<li>布局</li>
+<li>绘制</li>
+<li>动态变化</li>
+<li>渲染引擎的线程</li>
+<li>CSS2可视模型<br>什么是浏览器的重绘和重排呢?<br>二者何时发生以及如何权衡？<br>将重绘和重排引发的性能问题考虑进去？<h3 id="相关参考："><a href="#相关参考：" class="headerlink" title="相关参考："></a>相关参考：</h3></li>
+<li><a href="http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="external"> http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork </a></li>
+<li><a href="https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a#.95wl113gy" target="_blank" rel="external">https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a#.95wl113gy</a></li>
+<li><a href="https://medium.com/@ipestov/all-you-need-to-know-about-web-rendering-c5e27cc77ecb#.7gc9w7ej9" title="重绘和重排" target="_blank" rel="external">All You Need to Know About Web Rendering</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;通常，衡量一个网页最常用的指标，就是看他的 total page load time。显而易见，指出来网页的下载花费了多少时间，这是一个非常
+    
+    </summary>
+    
+      <category term="按下按钮，世界发生了什么" scheme="http://yoursite.com/categories/%E6%8C%89%E4%B8%8B%E6%8C%89%E9%92%AE%EF%BC%8C%E4%B8%96%E7%95%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"/>
+    
+    
+      <category term="渲染" scheme="http://yoursite.com/tags/%E6%B8%B2%E6%9F%93/"/>
     
   </entry>
   
